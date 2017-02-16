@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_circular_five"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="12dp" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/u1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="李逵"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="爸爸"
+        android:textColor="@color/black_middle"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="12关注"
+        android:textColor="@color/black_middle"
+        android:textSize="14sp" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_circular_two_bg_gray_btn"
+        android:text="已关注"
+        android:textColor="@color/black_light" />
+
+</LinearLayout>

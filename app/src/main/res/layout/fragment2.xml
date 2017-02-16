@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/context"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+    <!--未登陆-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="亲，您还没登录哦~"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="36dp"
+            android:background="@drawable/border_circular_two_green"
+            android:text="@string/login_btn_str"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/green"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/most_relative_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="最亲的人："
+                android:textColor="@color/black_middle"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/edit" />
+        </LinearLayout>
+
+        <com.example.view.HorizontalListView
+            android:id="@+id/horizantal_lv"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="12dp"></com.example.view.HorizontalListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/list_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="12dp">
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@mipmap/u1" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/photo"
+                android:text="李逵"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_toRightOf="@id/photo"
+                android:text="10天前发布"
+                android:textColor="@color/black_middle"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/listView"
+            style="@style/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+
+</LinearLayout>

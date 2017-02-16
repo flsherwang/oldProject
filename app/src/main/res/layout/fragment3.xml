@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_rdio1"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/border_circular_twenty_green"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/week_rank"
+            android:textColor="@color/radio_group_selector_white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_rdio2"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/border_circular_twenty_gray"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/month_rank"
+            android:textColor="@color/radio_group_selector_white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_rdio3"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/border_circular_twenty_gray"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/all_rank"
+            android:textColor="@color/radio_group_selector_white"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@mipmap/channel"/>
+</LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mPaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

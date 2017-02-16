@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" >
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_bg"
+        android:layout_gravity="center"
+        android:minWidth="200dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/prompt"
+            android:textColor="@color/font_orange"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="@string/exit_app"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/message"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:visibility="gone"
+                android:textColor="@color/lable_gray"
+                android:textSize="14sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/tips_wrapper"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/protocol"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tips_content"
+                android:layout_centerVertical="true"
+                android:text="下次不再显示"
+                android:layout_toRightOf="@+id/protocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#D1D1D1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="45dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/cancel_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/left_btn_select"
+                android:text="@string/cancel"
+                android:textColor="@color/btntextcolor"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/single_line"
+                android:layout_width="1dp"
+                android:visibility="gone"
+                android:layout_height="match_parent"
+                android:background="#D1D1D1"
+                android:orientation="horizontal" />
+
+            <Button
+                android:id="@+id/neutral_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/left_btn_select"
+                android:text="@string/dismiss"
+                android:textColor="@color/btntextcolor"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/second_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#D1D1D1"
+                android:orientation="horizontal" />
+
+            <Button
+                android:id="@+id/confirm_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/right_btn_select"
+                android:text="@string/confirm"
+                android:textColor="@color/btntextcolor"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

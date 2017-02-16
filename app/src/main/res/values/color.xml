@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="green">#30cd00</color>
+    <color name="bg_gray">#f8f8f8</color>
+    <color name="black_light">#999999</color>
+    <color name="black_middle">#666666</color>
+    <color name="black">#333333</color>
+    <color name="white">#ffffff</color>
+    <color name="line_gray">#d9d9d9</color>
+    <color name="black_dim">#909090</color>
+    <color name="theme_red">#eb1212</color>
+    <color name="lable_gray">#8f8f8f</color>
+    <color name="gray_bg">#efefef</color>
+    <color name="gray">#d6d6d6</color>
+    <color name="red">#c40033</color>
+
+    <!-- 文字颜色 -->
+    <color name="title_text_color_light">#dddddd</color>
+    <color name="font_orange">#ed6c00</color>
+    <color name="btntextcolor">#ff1E90FF</color>
+    <color name="transparent">#00000000</color>
+    <!-- refreshListView -->
+    <color name="gold">#8f7a10</color>
+    <color name="pull_refresh_textview">#000000</color>
+</resources>
