@@ -2,13 +2,18 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
+
+
+
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -17,7 +22,6 @@
         <item name="android:windowNoTitle">true</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
     <style name="mystyle" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -92,9 +96,8 @@
     <!--
          <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">fonts/FZLTXHK.TTF</item>
-    </style>
+    </style>
     -->
-
     <declare-styleable name="FlowLayout">
         <attr name="horizontal_spacing" format="dimension" />
         <attr name="vertical_spacing" format="dimension" />
@@ -112,7 +115,10 @@
         <item name="progress_text_color">#3498DB</item>
         <item name="progress_reached_bar_height">1.5dp</item>
         <item name="progress_unreached_bar_height">0.75dp</item>
-    </style>
+    </style>
+
+
+
     -->
 
 
@@ -206,7 +212,11 @@
         <item name="progress_text_color">#ECF0F1</item>
         <item name="progress_reached_bar_height">1.5dp</item>
         <item name="progress_unreached_bar_height">0.75dp</item>
-    </style>
+    </style>
+
+
+
+
     -->
     <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/checkbox_bg</item>
@@ -224,7 +234,10 @@
         <item name="onDrawable">@drawable/md_back_on</item>
         <item name="thumbDrawable">@drawable/md_thumb</item>
         <item name="thumb_margin">-17dp</item>
-    </style>
+    </style>
+
+
+
     -->
 
     <style name="SwitchButtonStyle">

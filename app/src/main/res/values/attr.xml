@@ -223,6 +223,11 @@
         <attr name="ptrAdapterViewBackground" format="reference|color" />
         <attr name="ptrDrawableTop" format="reference" />
         <attr name="ptrDrawableBottom" format="reference" />
+
+
+        <attr name="textsize" format="reference|dimension" />
+        <attr name="textsize2" format="reference|dimension" />
+        <attr name="textsize3" format="reference|dimension" />
     </declare-styleable>
     
 </resources>

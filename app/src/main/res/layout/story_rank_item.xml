@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:background="@drawable/layout_select">
 
     <ImageView
         android:id="@+id/pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@mipmap/story_icon" />
-
 
     <TextView
         android:id="@+id/title"
@@ -20,7 +20,6 @@
         android:layout_toRightOf="@id/pic"
         android:text="我的兄弟姐妹"
         android:textSize="16sp" />
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +97,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:src="@mipmap/award" />
-
     </LinearLayout>
 
 </RelativeLayout>

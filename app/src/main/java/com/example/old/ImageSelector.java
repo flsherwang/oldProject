@@ -1,6 +1,5 @@
 package com.example.old;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -10,12 +9,14 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
 import com.example.application.OldApplication;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class ImageSelector extends Activity {
+public class ImageSelector extends BaseActivity {
     private LinearLayout photograph, photo_album, cancel;
     public static final int NONE = 0;
     public static final int PHOTOHRAPH = 1;// 拍照

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -19,8 +18,8 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class Fragment2 extends BaseFragment {
-    @ViewInject(R.id.horizantal_lv)
-    private HorizontalListView horizantal_lv;
+    @ViewInject(R.id.horizontal_lv)
+    private HorizontalListView horizontal_lv;
     @ViewInject(R.id.listView)
     private ListView listView;
     private RelativeAdapter adapter_rl;
@@ -45,10 +44,10 @@ public class Fragment2 extends BaseFragment {
 
     private void initView() {
         adapter_rl = new RelativeAdapter(getActivity());
-        horizantal_lv.setAdapter(adapter_rl);
+        horizontal_lv.setAdapter(adapter_rl);
         storyAdapter = new StoryAdapter(getActivity());
         listView.setAdapter(storyAdapter);
-        horizantal_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        horizontal_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AnimationUtil.startActivity(getActivity(), new Intent(getActivity(), CoverActivity.class));

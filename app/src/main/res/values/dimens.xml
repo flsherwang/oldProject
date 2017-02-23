@@ -4,4 +4,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+
+    <dimen name="tset_small">12sp</dimen>
+    <dimen name="tset_middle">16sp</dimen>
+    <dimen name="tset_big">20sp</dimen>
+
 </resources>

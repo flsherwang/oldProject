@@ -1,15 +1,12 @@
 package com.example.old;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -62,7 +59,8 @@ public class MainActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()){
               case  R.id.add_iv:
-                  AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,PublicStoryActivity.class));
+//                  AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,PublicStoryActivity.class));
+                  AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,WebViewActivity.class).putExtra("title","智偕老知识集市").putExtra("url","https://www.yixielao.com/zsjs/index.html"));
                 break;
             }
         }

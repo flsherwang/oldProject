@@ -1,10 +1,14 @@
 package com.example.application;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Environment;
+import android.util.DisplayMetrics;
+
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.example.old.MainActivity;
@@ -19,14 +23,12 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.os.Environment;
-import android.util.DisplayMetrics;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class OldApplication extends Application{
 
@@ -124,9 +126,9 @@ public class OldApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        //
+
         String sdpath = "";
-        LogUtils.e( "lwjtest: Environment.MEDIA_MOUNTED" + Environment.getExternalStorageState() );
+        LogUtils.e( "lwjtest: Environment.MEDIA_MOUNTED" + Environment.getExternalStorageState());
         if( Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ){
             pathSDCard = Environment.getExternalStorageDirectory().getAbsolutePath();
             CachePath = pathSDCard + "/Android/data/com.laifucard.welfare/cache";

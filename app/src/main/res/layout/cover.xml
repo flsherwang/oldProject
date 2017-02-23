@@ -106,4 +106,10 @@
             android:textColor="@color/red"
             android:textSize="18sp" />
     </LinearLayout>
+    <com.example.view.seekbar.FontSliderBar
+        android:id="@+id/sliderbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14.33dp"
+        android:layout_marginRight="10.33dp" />
 </LinearLayout>

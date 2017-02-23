@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':okhttputils')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -32,4 +33,5 @@ dependencies {
     compile files('libs/universal-image-loader-1.9.3.jar')
     compile files('libs/xutils.jar')
     compile files('libs/zxing_code.jar')
+    compile files('libs/commons-lang-2.6.jar')
 }
