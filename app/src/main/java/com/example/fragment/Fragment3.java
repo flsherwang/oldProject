@@ -24,7 +24,6 @@ public class Fragment3 extends BaseFragment {
     @ViewInject(R.id.radioGroup)
     private RadioGroup radioGroup;
     private FragmentPagerAdapter mAdapter;
-    //	private List<Fragment> mFragments = new ArrayList<Fragment>();
     Fragment fragment;
     HashMap<Integer, Fragment> mFragments = new HashMap<>();
 

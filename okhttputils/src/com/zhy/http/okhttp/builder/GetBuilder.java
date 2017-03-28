@@ -1,10 +1,10 @@
 package com.zhy.http.okhttp.builder;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import com.zhy.http.okhttp.request.GetRequest;
 import com.zhy.http.okhttp.request.RequestCall;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by zhy on 15/12/14.

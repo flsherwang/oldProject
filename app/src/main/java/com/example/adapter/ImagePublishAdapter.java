@@ -30,7 +30,7 @@ public class ImagePublishAdapter extends BaseAdapter {
 		// 多返回一个用于展示添加图标
 		if (mDataList == null) {
 			return 1;
-		} else if (mDataList.size() == CustomConstants.MAX_IMAGE_SIZE) {
+		} else if (mDataList.size() >= CustomConstants.MAX_IMAGE_SIZE) {
 			return CustomConstants.MAX_IMAGE_SIZE;
 		} else {
 			return mDataList.size() + 1;

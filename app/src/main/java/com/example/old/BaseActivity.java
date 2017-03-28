@@ -29,14 +29,10 @@ import static android.widget.Toast.makeText;
  * @date 2017年1月7日 下午18:12:52
  */
 public class BaseActivity extends FragmentActivity {
-    private Intent intent;
-    private static boolean isFront = true;
     protected LinearLayout back_iv, rightIcon_ll;
     protected TextView title, rightMenu, rightMenu1, leftMenu;
     protected ImageView rightIcon, top_back;
     protected static Context context;
-    protected static boolean isNeedGestureTrue = true;
-    public int states = 3;
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -44,14 +40,6 @@ public class BaseActivity extends FragmentActivity {
         BusProvider.getInstance().register(this);
         int theme= PreferencesUtils.getInt(this,"theme",0);
         TextScaleUtils.scaleTextSize(this,theme);
-//        if (0==theme){
-//            setTheme(R.style.AppTheme);
-//        }else if(1==theme){
-//            setTheme(R.style.AppTheme1);
-//        }else{
-//            setTheme(R.style.AppTheme2);
-//        }
-//        Log.e("wang","mainActivity="+theme);
     }
 
     @Override

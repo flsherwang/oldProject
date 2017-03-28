@@ -53,7 +53,7 @@ public class ProgressWheel extends View {
 	private RectF circleInnerContour = new RectF();
 
 	// Animation
-	// The amount of pixels to move the bar by on each draw
+	// The amount of pixels to remove the bar by on each draw
 	private int spinSpeed = 2;
 	// The number of milliseconds to wait inbetween each draw
 	private int delayMillis = 0;

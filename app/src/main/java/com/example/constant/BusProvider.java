@@ -3,7 +3,7 @@ package com.example.constant;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
-public class BusProvider {
+public class BusProvider{
 
 	public static Bus bus;
 

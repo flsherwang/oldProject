@@ -36,7 +36,7 @@ public class RankFragment1 extends BaseFragment {
 
 	private void initView(){
 		initPull();
-		pullRefresh();
+//		pullRefresh();
 		storyListAdapter = new StoryListAdapter(getActivity());
 		listView.setAdapter(storyListAdapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

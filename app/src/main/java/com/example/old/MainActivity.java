@@ -1,6 +1,7 @@
 package com.example.old;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,10 @@ import com.example.fragment.Fragment1;
 import com.example.fragment.Fragment2;
 import com.example.fragment.Fragment3;
 import com.example.util.AnimationUtil;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -31,6 +36,11 @@ public class MainActivity extends BaseActivity {
     private ImageView add_iv;
     private ViewPagerAdapter viewPagerAdapter;
     private List<Fragment> mFragments = new ArrayList<Fragment>();
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,9 @@ public class MainActivity extends BaseActivity {
         ViewUtils.inject(this);
         initLayout();
         initControls();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @SuppressWarnings("deprecation")
@@ -54,14 +67,50 @@ public class MainActivity extends BaseActivity {
         add_iv.setOnClickListener(click);
     }
 
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
+
     class UserClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-              case  R.id.add_iv:
-//                  AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,PublicStoryActivity.class));
-                  AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,WebViewActivity.class).putExtra("title","智偕老知识集市").putExtra("url","https://www.yixielao.com/zsjs/index.html"));
-                break;
+            switch (v.getId()) {
+                case R.id.add_iv:
+                    AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this, PublicStoryActivity.class));
+//                AnimationUtil.startActivity(MainActivity.this, new Intent().setClass(MainActivity.this,WebViewActivity.class).putExtra("title","智偕老知识集市").putExtra("url","https://www.yixielao.com/zsjs/index.html"));
+                    break;
             }
         }
     }
@@ -77,7 +126,6 @@ public class MainActivity extends BaseActivity {
         mFragments.add(fragment2);
         mFragments.add(fragment3);
     }
-
 
     RadioGroup.OnCheckedChangeListener changeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override

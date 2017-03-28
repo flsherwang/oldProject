@@ -8,10 +8,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.example.adapter.ImageBucketAdapter;
+import com.example.application.OldApplication;
 import com.example.entity.ImageBucket;
 import com.example.entity.ImageItem;
 import com.example.entity.IntentConstants;
 import com.example.util.ImageFetcher;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,16 +32,15 @@ import java.util.List;
 public class ImageBucketChooseActivity extends BaseActivity {
 	private ImageFetcher mHelper;
 	private List<ImageBucket> mDataList = new ArrayList<ImageBucket>();
+	@ViewInject(R.id.listview)
 	private ListView mListView;
 	private ImageBucketAdapter mAdapter;
-	// 设置单一变量
-	public static ImageBucketChooseActivity imageBucketChooseActivity;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_image_bucket_choose);
-		imageBucketChooseActivity = this;
+		OldApplication.getInstance().addActivity(this);
+		ViewUtils.inject(this);
 		mHelper = ImageFetcher.getInstance(getApplicationContext());
 		initData();
 		initView();
@@ -49,7 +51,6 @@ public class ImageBucketChooseActivity extends BaseActivity {
 	}
 
 	private void initView() {
-		mListView = (ListView) findViewById(R.id.listview);
 		mAdapter = new ImageBucketAdapter(this, mDataList);
 		mListView.setAdapter(mAdapter);
 		initBackView();
@@ -68,10 +69,8 @@ public class ImageBucketChooseActivity extends BaseActivity {
 						subImageItemList = new ArrayList<ImageItem>( mDataList.get(position).imageList.subList( 0, mDataList.get(position).imageList.size() - 1 ) );
 					}
 				}
-
 				//反转一下
                 Collections.reverse( subImageItemList );
-
 				intent.putExtra(IntentConstants.EXTRA_IMAGE_LIST, (Serializable) subImageItemList  );
 				intent.putExtra(IntentConstants.EXTRA_BUCKET_NAME, mDataList.get(position).bucketName);
 				startActivity(intent);

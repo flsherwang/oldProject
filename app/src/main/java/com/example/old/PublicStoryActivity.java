@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
 import com.example.adapter.ImagePublishAdapter;
 import com.example.application.OldApplication;
 import com.example.entity.ImageItem;
@@ -21,7 +22,9 @@ import com.example.util.GetBitmapUsingOptions;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.view.annotation.ViewInject;
+
 import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -32,6 +35,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,10 +68,11 @@ public class PublicStoryActivity extends BaseActivity {
         OldApplication.getInstance().addActivity(this);
         ViewUtils.inject(this);
         initView();
-        regReceiver();
+
     }
 
     private void initView() {
+        regReceiver();
         initBackView();
         initTitleView(getResources().getString(R.string.title_public_story));
         initRightMenuView(getResources().getString(R.string.submit));
@@ -77,17 +82,17 @@ public class PublicStoryActivity extends BaseActivity {
         gridView.setAdapter(mAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // 当点击的是拍照按钮时
+                // 当点击的是+按钮时
                 if (position == mDataList.size()) {
                     startActivity(new Intent(context, GetPhotoActivity.class));
                 }
                 // 查看已选择的图片
-//                else {
-//                    Intent intent = new Intent(context, ImageZoomActivity.class);
-//                    intent.putExtra(IntentConstants.EXTRA_IMAGE_LIST, (Serializable) mDataList);
-//                    intent.putExtra(IntentConstants.EXTRA_CURRENT_IMG_POSITION, position);
-//                    startActivityForResult(intent, 100);
-//                }
+                else {
+                    Intent intent = new Intent(context, ImageZoomActivity.class);
+                    intent.putExtra(IntentConstants.EXTRA_IMAGE_LIST, (Serializable) mDataList);
+                    intent.putExtra(IntentConstants.EXTRA_CURRENT_IMG_POSITION, position);
+                    startActivityForResult(intent, 100);
+                }
             }
         });
     }
@@ -366,7 +371,6 @@ public class PublicStoryActivity extends BaseActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
 
-
         //性能优化,直接压缩成500K,不用循环
         int imageSize = baos.toByteArray().length;
         if (0 != imageSize) {
@@ -470,7 +474,7 @@ public class PublicStoryActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(ImageChooseActivity.ACTION) || intent.getAction().equals(GetPhotoActivity.ACTION)) {
                 mDataList.addAll((List<ImageItem>) intent.getSerializableExtra(IntentConstants.EXTRA_IMAGE_LIST));// 选择相册图片或者拍照发送的数据
-                initView();
+                mAdapter.notifyDataSetChanged();
             }
 
         }
@@ -497,7 +501,8 @@ public class PublicStoryActivity extends BaseActivity {
                 if (intent != null) {
                     mDataList.addAll((List<ImageItem>) intent.getSerializableExtra(IntentConstants.EXTRA_IMAGE_LIST));// 删除选择的图片后发送的数据
                 }
-                initView();
+                mAdapter = new ImagePublishAdapter(this, mDataList);
+                gridView.setAdapter(mAdapter);
             }
         }
     }

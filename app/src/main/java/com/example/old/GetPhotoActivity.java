@@ -1,21 +1,27 @@
 package com.example.old;
 
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
 import com.example.application.OldApplication;
 import com.example.entity.ImageItem;
 import com.example.entity.IntentConstants;
+import com.lidroid.xutils.ViewUtils;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GetPhotoActivity extends BaseActivity {
@@ -23,12 +29,14 @@ public class GetPhotoActivity extends BaseActivity {
     private String path = "";
     public static final String ACTION = "GetPhotoActivity";// 拍照完成发送广播
     private List<ImageItem> mDataList = new ArrayList<>();
-
+    Uri cameraUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_photo_popup);
+        OldApplication.getInstance().addActivity(this);
+        ViewUtils.inject(this);
         initView();
     }
 
@@ -63,7 +71,6 @@ public class GetPhotoActivity extends BaseActivity {
      * 拍照
      */
     public void takePhoto() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File vFile = new File(OldApplication.CACHE_PATH + "photo", String.valueOf(System.currentTimeMillis()) + ".jpg");
         if (!vFile.exists()) {
             vFile.getParentFile().mkdirs();
@@ -71,29 +78,41 @@ public class GetPhotoActivity extends BaseActivity {
             vFile.delete();
         }
         path = vFile.getAbsolutePath();
-        Uri cameraUri = Uri.fromFile(vFile);
+        cameraUri = Uri.fromFile(vFile);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraUri);
         startActivityForResult(intent, TAKE_PICTURE);
+
     }
 
     // 返回已选择的图片信息
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        finish();
+      OldApplication.getInstance().toFinish(GetPhotoActivity.class);
         switch (requestCode) {
             case TAKE_PICTURE:
-                if (!TextUtils.isEmpty(path)) {
-                    ImageItem item = new ImageItem();
-                    item.sourcePath = path;
-                    mDataList.add(item);
-                    Intent intent = new Intent(ACTION);
-                    intent.putExtra(IntentConstants.EXTRA_IMAGE_LIST, (Serializable) mDataList);
-                    sendBroadcast(intent);
+                ContentResolver resolver = getContentResolver();
+                //照片的原始资源地址
+//                Uri originalUri = data.getData();
+                try {
+                    //使用ContentProvider通过URI获取原始图片
+                    Bitmap photo = MediaStore.Images.Media.getBitmap(resolver,  cameraUri);
+                    if (photo != null) {
+                        //为防止原始图片过大导致内存溢出，这里先缩小原图显示，然后释放原始Bitmap占用的内存
+                        ImageItem item = new ImageItem();
+                        item.sourcePath = path;
+                        mDataList.add(item);
+                        Intent intent = new Intent(ACTION);
+                        intent.putExtra(IntentConstants.EXTRA_IMAGE_LIST, (Serializable) mDataList);
+                        sendBroadcast(intent);
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 break;
         }
     }
-
-    //	(Serializable) new ArrayList<ImageItem>(selectedImgs.values())
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         finish();

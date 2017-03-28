@@ -49,11 +49,12 @@ public class OldApplication extends Application{
      */
     public static String pathSDCard = "";
     public static String CachePath = "/storage/sdcard0/Android/data/com.example.old/cache";
-    public static  String CACHE_PATH = "mnt/sdcard/old/";
+    public static String CACHE_PATH = "/storage/emulated/0/old/";
+
     /**
      * 默认文件缓存路径
      */
-    private static String FilePath = "/storage/sdcard0/Android/data/com.laifucard.welfare/files/fs";
+    private static String FilePath = "/storage/sdcard0/Android/data/com.example.old/files/fs";
     /**
      * 异常路径
      */
@@ -112,7 +113,7 @@ public class OldApplication extends Application{
     /**
      * 程序活动列表
      */
-    private List<Activity> activityList = new ArrayList<Activity>();
+    public List<Activity> activityList = new ArrayList<Activity>();
     public static boolean indicatorClickable = true;
 
     public static OldApplication getInstance() {
@@ -131,7 +132,7 @@ public class OldApplication extends Application{
         LogUtils.e( "lwjtest: Environment.MEDIA_MOUNTED" + Environment.getExternalStorageState());
         if( Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ){
             pathSDCard = Environment.getExternalStorageDirectory().getAbsolutePath();
-            CachePath = pathSDCard + "/Android/data/com.laifucard.welfare/cache";
+            CachePath = pathSDCard + "/Android/data/com.example.old/cache";
             LogUtils.e( "lwjtest: mounted" + pathSDCard );
             //尝试创建文件夹,如果失败则使用系统缓存
             try{
@@ -152,14 +153,14 @@ public class OldApplication extends Application{
             LogUtils.e( "lwjtest: not mounted" + pathSDCard );
         }
 
-        CACHE_PATH = pathSDCard + "/laifucard/";
+        CACHE_PATH = pathSDCard + "/old/";
         //创建文件夹
         File file = new File( CachePath );
         if ( !file.exists() ){
             file.mkdirs();
         }
         //初始化
-        FilePath = sdpath + "/Android/data/com.laifucard.welfare/files/fs";
+        FilePath = sdpath + "/Android/data/com.example.old/files/fs";
         //创建目录
         file = new File( FilePath );
         if ( !file.exists() ){
@@ -228,7 +229,6 @@ public class OldApplication extends Application{
         if ( !file.exists() ){
             file.mkdirs();
         }
-
         //ExceptionHandle.getInstance().init(this);
         // 百度推送初始化
         // Push: 以apikey的方式登录，一般放在主Activity的onCreate中。
@@ -348,6 +348,7 @@ public class OldApplication extends Application{
                 activityList.get(i).finish();
                 activityList.remove(i);
             }
+
         }
     }
 

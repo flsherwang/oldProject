@@ -1,19 +1,19 @@
 package com.example.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import com.example.entity.ImageBucket;
-import com.example.entity.ImageItem;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import android.util.Log;
+
+import com.example.entity.ImageBucket;
+import com.example.entity.ImageItem;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -39,9 +39,6 @@ public class ImageFetcher
 
 	public static ImageFetcher getInstance(Context context)
 	{
-		// if(context==null)
-		// context = MyApplication.getMyApplicationContext(); TODO
-
 		if (instance == null)
 		{
 			synchronized (ImageFetcher.class)
